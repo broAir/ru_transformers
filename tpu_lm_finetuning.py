@@ -286,7 +286,7 @@ def mask_tokens(inputs, tokenizer, args):
     inputs[indices_random] = random_words[indices_random]
 
     # The rest of the time (10% of the time) we keep the masked input tokens unchanged
-    return inputs, labels
+    return inputs.detach().unique(), labels.detach().unique()
 
 # from transformers/modeling_utils.py, adapted to tpu
 def save_pretrained(model, save_directory):
